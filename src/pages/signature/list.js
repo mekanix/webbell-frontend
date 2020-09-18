@@ -1,7 +1,5 @@
 import React from 'react'
 import {
-  AppBar,
-  Button,
   CircularProgress,
   Paper,
   Table,
@@ -10,10 +8,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Toolbar,
 } from '@material-ui/core'
 import { withStore } from 'freenit'
 import { errors } from 'utils'
+import Template from 'templates/default/detail'
 
 
 class SignatureList extends React.Component {
@@ -72,7 +70,7 @@ class SignatureList extends React.Component {
               {this.props.store.signature.list.data.map((sig, index) => (
                 <TableRow key={sig.id}>
                   <TableCell>
-                    {index}
+                    {index + 1}
                   </TableCell>
                   <TableCell>
                     {sig.title}
@@ -96,29 +94,14 @@ class SignatureList extends React.Component {
         </TableContainer>
       )
     return (
-      <div style={{ minHeight: "calc(100vh - 4px)", backgroundColor: "#f3f3f3ff" }}>
-        <AppBar style={{ display: "flex", alignItems: "center", backgroundColor: "#4ab969" }} position="sticky">
-          <Toolbar style={{ backgroundColor: "#4ab969" }}>
-            <Button style={{ color: "white" }}>
-              Početna
-            </Button>
-            <a href="#otvorenopismo">
-              <Button style={{ color: "white" }}>
-                potpisi
-              </Button>
-            </a>
-            <Button style={{ color: "white" }}>
-              pridruži se
-            </Button>
-          </Toolbar>
-        </AppBar>
+      <Template style={{}}>
         <Paper style={{ padding: 20 }}>
           <h2 style={{ margin: 0, padding: "30px" }}>
             Proglas su potpisali:
           </h2>
           {table}
         </Paper>
-      </div>
+      </Template>
     )
   }
 }

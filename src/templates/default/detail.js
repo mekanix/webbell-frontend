@@ -6,6 +6,7 @@ import { withStore, EmptyTemplate } from 'freenit'
 // Components
 import {
   AppBar,
+  Button,
   Drawer,
   IconButton,
   ListItemIcon,
@@ -20,7 +21,6 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import LoginIcon from '@material-ui/icons/Input'
 import LogoutIcon from '@material-ui/icons/PowerSettingsNew'
 import ProfileIcon from '@material-ui/icons/AccountCircle'
-import MenuIcon from '@material-ui/icons/Menu'
 import RoleIcon from '@material-ui/icons/People'
 import UserIcon from '@material-ui/icons/PeopleOutline'
 
@@ -49,20 +49,7 @@ class Template extends React.Component {
   }
 
   render() {
-    const { auth, profile, resolution } = this.props.store
-    const AnonButton = (
-      <Link to="/login" style={styles.login}>
-        <IconButton color="inherit">
-          <LoginIcon />
-        </IconButton>
-      </Link>
-    )
-    const LoggedinButton = (
-      <IconButton color="inherit" onClick={this.handleLogout}>
-        <LogoutIcon />
-      </IconButton>
-    )
-    const AuthButton = auth.detail.ok ? LoggedinButton : AnonButton
+    const { auth, profile } = this.props.store
     const AdminMenu = profile.detail.admin
       ? [
         (
@@ -129,25 +116,23 @@ class Template extends React.Component {
         ...AdminMenu,
       ]
       : null
-    const BarLinks = resolution.detail.width > 410
-      ? (
-        <div>
-          {AuthButton}
-        </div>
-      ) : null
     return (
       <div>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h5" color="inherit" style={styles.flex}>
-              <IconButton color="inherit" onClick={this.handleMenuOpen}>
-                <MenuIcon />
-              </IconButton>
-              <Link to="/" data-id="app">
-                Freenit
-              </Link>
-            </Typography>
-            {BarLinks}
+        <AppBar style={{ display: "flex", alignItems: "center", backgroundColor: "#4ab969" }} position="sticky">
+          <Toolbar style={{ backgroundColor: "#4ab969" }}>
+            <Link to="/">
+              <Button style={{ color: "white" }}>
+                Početna
+              </Button>
+            </Link>
+            <Link to="/signature">
+              <Button style={{ color: "white" }}>
+                potpisi
+              </Button>
+            </Link>
+            <Button style={{ color: "white" }}>
+              pridruži se
+            </Button>
           </Toolbar>
         </AppBar>
         <EmptyTemplate.detail secure={this.props.secure} style={this.props.style}>
