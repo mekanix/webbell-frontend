@@ -10,6 +10,7 @@ import {
   User,
 } from 'freenit'
 import Landing from 'pages/landing'
+import Signature from 'pages/signature'
 import { withRouter } from 'react-router-dom'
 
 // Templates
@@ -34,6 +35,10 @@ const StoreProvider = (props) => {
     role: new Role.store(
       useState(Role.initial.detail),
       useState(Role.initial.list),
+    ),
+    signature: new Signature.store(
+      useState(Signature.initial.detail),
+      useState(Signature.initial.list),
     ),
     user: new User.store(
       useState(User.initial.detail),
