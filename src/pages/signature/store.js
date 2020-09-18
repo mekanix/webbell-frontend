@@ -22,4 +22,22 @@ export default class LandingStore {
       }
     }
   }
+
+  getCount = async () => {
+    try {
+      const response = await window.rest.get('/medics/count')
+      const result = {
+        ...this.list,
+        ...response.data,
+        ok: true
+      }
+      this.setList(result)
+      return result
+    } catch (error) {
+      return {
+        ...error,
+        ok: false,
+      }
+    }
+  }
 }
