@@ -13,8 +13,10 @@ import { withStore } from 'freenit'
 import { errors } from 'utils'
 import Template from 'templates/default/detail'
 
+import styles from './styles'
 
-class SignatureList extends React.Component {
+
+class MedicsList extends React.Component {
   state = {
     fetching: true,
   }
@@ -25,8 +27,8 @@ class SignatureList extends React.Component {
   }
 
   fetch = async () => {
-    const { signature, notification } = this.props.store
-    const response = await signature.fetchAll()
+    const { medics, notification } = this.props.store
+    const response = await medics.fetchAll()
     this.setState({ fetching: false })
     if (!response.ok) {
       const error = errors(response)
@@ -37,7 +39,7 @@ class SignatureList extends React.Component {
   render() {
     const table = this.state.fetching
       ? (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={styles.progress}>
           <CircularProgress />
         </div>
       )
@@ -46,28 +48,28 @@ class SignatureList extends React.Component {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell style={{ fontSize: "20px" }}>
+                <TableCell style={styles.cell}>
                   No.
                 </TableCell>
-                <TableCell style={{ fontSize: "20px" }}>
+                <TableCell style={styles.cell}>
                   Title
                 </TableCell>
-                <TableCell style={{ fontSize: "20px" }}>
+                <TableCell style={styles.cell}>
                   Name
                 </TableCell>
-                <TableCell style={{ fontSize: "20px" }}>
+                <TableCell style={styles.cell}>
                   Specialty
                 </TableCell>
-                <TableCell style={{ fontSize: "20px" }}>
+                <TableCell style={styles.cell}>
                   Academic
                 </TableCell>
-                <TableCell style={{ fontSize: "20px" }}>
+                <TableCell style={styles.cell}>
                   City
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.store.signature.list.data.map((sig, index) => (
+              {this.props.store.medics.list.data.map((sig, index) => (
                 <TableRow key={sig.id}>
                   <TableCell>
                     {index + 1}
@@ -95,8 +97,8 @@ class SignatureList extends React.Component {
       )
     return (
       <Template style={{}}>
-        <Paper style={{ padding: 20 }}>
-          <h2 style={{ margin: 0, padding: "30px" }}>
+        <Paper style={styles.paper}>
+          <h2 style={styles.title}>
             Proglas su potpisali:
           </h2>
           {table}
@@ -107,4 +109,4 @@ class SignatureList extends React.Component {
 }
 
 
-export default withStore(SignatureList)
+export default withStore(MedicsList)

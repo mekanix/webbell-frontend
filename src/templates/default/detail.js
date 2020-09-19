@@ -125,7 +125,7 @@ class Template extends React.Component {
                 Početna
               </Button>
             </Link>
-            <Link to="/signature">
+            <Link to="/medics">
               <Button style={{ color: "white" }}>
                 potpisi
               </Button>
