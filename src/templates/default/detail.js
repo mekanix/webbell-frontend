@@ -50,6 +50,19 @@ class Template extends React.Component {
 
   render() {
     const { auth, profile } = this.props.store
+    const AnonButton = (
+      <Link to="/login" style={styles.login}>
+        <IconButton>
+          <LoginIcon />
+        </IconButton>
+      </Link>
+    )
+    const LoggedinButton = (
+      <IconButton onClick={this.handleLogout}>
+        <LogoutIcon />
+      </IconButton>
+    )
+    const AuthButton = auth.detail.ok ? LoggedinButton : AnonButton
     const AdminMenu = profile.detail.admin
       ? [
         (
@@ -118,21 +131,24 @@ class Template extends React.Component {
       : null
     return (
       <div>
-        <AppBar style={{ display: "flex", alignItems: "center", backgroundColor: "#4ab969" }} position="sticky">
+        <AppBar position="sticky">
           <Toolbar style={{ backgroundColor: "#4ab969" }}>
-            <Link to="/">
+            <Typography variant="h5" color="inherit" style={styles.flex}>
+              <Link to="/">
+                <Button style={{ color: "white" }}>
+                  Početna
+                </Button>
+              </Link>
+              <Link to="/medics">
+                <Button style={{ color: "white" }}>
+                  potpisi
+                </Button>
+              </Link>
               <Button style={{ color: "white" }}>
-                Početna
+                pridruži se
               </Button>
-            </Link>
-            <Link to="/medics">
-              <Button style={{ color: "white" }}>
-                potpisi
-              </Button>
-            </Link>
-            <Button style={{ color: "white" }}>
-              pridruži se
-            </Button>
+            </Typography>
+            {AuthButton}
           </Toolbar>
         </AppBar>
         <EmptyTemplate.detail secure={this.props.secure} style={this.props.style}>

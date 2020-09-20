@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   CircularProgress,
   Paper,
@@ -27,13 +28,73 @@ class MedicsList extends React.Component {
   }
 
   fetch = async () => {
-    const { medics, notification } = this.props.store
-    const response = await medics.fetchAll()
+    const { medic, notification } = this.props.store
+    const response = await medic.fetchAll()
     this.setState({ fetching: false })
     if (!response.ok) {
       const error = errors(response)
       notification.show(error.message)
     }
+  }
+
+  generateRow = (sig, index) => {
+    const row = this.props.store.auth.detail.ok
+      ? (
+        <TableRow key={sig.id}>
+          <TableCell>
+            <Link to={`/medic/${sig.id}`}>
+              {index + 1}
+            </Link>
+          </TableCell>
+          <TableCell>
+            <Link to={`/medic/${sig.id}`}>
+              {sig.title}
+            </Link>
+          </TableCell>
+          <TableCell>
+            <Link to={`/medic/${sig.id}`}>
+              {sig.name}
+            </Link>
+          </TableCell>
+          <TableCell>
+            <Link to={`/medic/${sig.id}`}>
+              {sig.specialty}
+            </Link>
+          </TableCell>
+          <TableCell>
+            <Link to={`/medic/${sig.id}`}>
+              {sig.academic}
+            </Link>
+          </TableCell>
+          <TableCell>
+            <Link to={`/medic/${sig.id}`}>
+              {sig.city}
+            </Link>
+          </TableCell>
+        </TableRow>
+      ) : (
+        <TableRow key={sig.id}>
+          <TableCell>
+            {index + 1}
+          </TableCell>
+          <TableCell>
+            {sig.title}
+          </TableCell>
+          <TableCell>
+            {sig.name}
+          </TableCell>
+          <TableCell>
+            {sig.specialty}
+          </TableCell>
+          <TableCell>
+            {sig.academic}
+          </TableCell>
+          <TableCell>
+            {sig.city}
+          </TableCell>
+        </TableRow>
+      )
+    return row
   }
 
   render() {
@@ -69,28 +130,9 @@ class MedicsList extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.store.medics.list.data.map((sig, index) => (
-                <TableRow key={sig.id}>
-                  <TableCell>
-                    {index + 1}
-                  </TableCell>
-                  <TableCell>
-                    {sig.title}
-                  </TableCell>
-                  <TableCell>
-                    {sig.name}
-                  </TableCell>
-                  <TableCell>
-                    {sig.specialty}
-                  </TableCell>
-                  <TableCell>
-                    {sig.academic}
-                  </TableCell>
-                  <TableCell>
-                    {sig.city}
-                  </TableCell>
-                </TableRow>
-              ))}
+              {this.props.store.medic.list.data.map(
+                (sig, index) => this.generateRow(sig, index)
+              )}
             </TableBody>
           </Table>
         </TableContainer>
