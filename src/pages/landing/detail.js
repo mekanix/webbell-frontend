@@ -167,9 +167,11 @@ class Landing extends React.Component {
               </CardContent>
             </CardActionArea>
             <CardActions style={styles.third.actions}>
-              <Button>
-                saznaj više
-              </Button>
+              <Link to="/socials">
+                <Button>
+                  saznaj više
+                </Button>
+              </Link>
             </CardActions>
           </Card>
           <Card style={styles.third.card}>
