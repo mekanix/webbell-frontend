@@ -12,6 +12,7 @@ import Dashboard from 'pages/dashboard'
 import Landing from 'pages/landing'
 import Role from 'pages/role'
 import Medic from 'pages/medic'
+import Social from 'pages/social'
 import User from 'pages/user'
 
 
@@ -36,6 +37,8 @@ const Routing = () => {
       <Route exact path="/roles/:page" component={Role.list} />
       <Route exact path="/medic/:id" component={Medic.detail} />
       <Route exact path="/medics" component={Medic.list} />
+      <Route exact path="/social/:id" component={Social.detail} />
+      <Route exact path="/socials" component={Social.list} />
       <Route exact path="/user/:id" component={User.detail} />
       <Route exact path="/users" component={User.list} />
       <Route exact path="/users/:page" component={User.list} />

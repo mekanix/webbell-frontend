@@ -10,6 +10,7 @@ import {
 import Template from 'templates/default/detail'
 
 import MedicList from 'components/medic-list'
+import SocialList from 'components/social-list'
 
 import styles from './styles'
 
@@ -22,6 +23,7 @@ class AdminDashboard extends React.Component {
           <UserList />
           <RoleList />
           <MedicList />
+          <SocialList />
         </Paper>
       </Template>
     )

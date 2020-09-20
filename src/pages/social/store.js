@@ -1,4 +1,4 @@
-export default class MedicStore {
+export default class SocialStore {
   constructor(detail, list) {
     this.detail = detail[0]
     this.setDetail = detail[1]
@@ -8,7 +8,7 @@ export default class MedicStore {
 
   fetchAll = async () => {
     try {
-      const response = await window.rest.get('/medics')
+      const response = await window.rest.get('/socials')
       const result = {
         ...response.data,
         ok: true
@@ -25,7 +25,7 @@ export default class MedicStore {
 
   fetch = async (id) => {
     try {
-      const response = await window.rest.get(`/medics/${id}`)
+      const response = await window.rest.get(`/socials/${id}`)
       const result = {
         ...response.data,
         ok: true
@@ -42,7 +42,7 @@ export default class MedicStore {
 
   edit = async (id, data) => {
     try {
-      const response = await window.rest.patch(`/medics/${id}`, data)
+      const response = await window.rest.patch(`/socials/${id}`, data)
       const result = {
         ...response.data,
         ok: true
@@ -59,7 +59,7 @@ export default class MedicStore {
 
   getCount = async () => {
     try {
-      const response = await window.rest.get('/medics/count')
+      const response = await window.rest.get('/socials/count')
       const result = {
         ...this.list,
         ...response.data,
