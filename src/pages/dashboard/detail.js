@@ -9,6 +9,8 @@ import {
 } from 'freenit'
 import Template from 'templates/default/detail'
 
+import MedicList from 'components/medic-list'
+
 import styles from './styles'
 
 
@@ -19,6 +21,7 @@ class AdminDashboard extends React.Component {
         <Paper style={styles.root}>
           <UserList />
           <RoleList />
+          <MedicList />
         </Paper>
       </Template>
     )

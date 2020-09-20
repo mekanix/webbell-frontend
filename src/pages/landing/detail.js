@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   Button,
   Card,
@@ -25,8 +26,8 @@ class Landing extends React.Component {
   }
 
   fetch = async () => {
-    const { medics, notification } = this.props.store
-    const response = await medics.getCount()
+    const { medic, notification } = this.props.store
+    const response = await medic.getCount()
     if (!response.ok) {
       const error = errors(response)
       notification.show(error.message)
@@ -34,6 +35,13 @@ class Landing extends React.Component {
   }
 
   render() {
+    const cardStyle = {
+      ...styles.third.card,
+      marginLeft: 10,
+      marginRight: 10,
+      minHeight: 450,
+    }
+
     return (
       <Template style={{}}>
         <div style={styles.first}>
@@ -42,12 +50,18 @@ class Landing extends React.Component {
               UJEDINJENI PROTIV KOVIDA
             </p>
             <p style={styles.first.count}>
-              {this.props.store.medics.list.total} potpisa
+              {this.props.store.medic.list.total} potpisa
             </p>
           </div>
-          <Button style={styles.first.join} variant="contained" color="secondary">
-            pridruži nam se
-          </Button>
+          <a href="#otvorenopismo">
+            <Button
+              color="secondary"
+              variant="contained"
+              style={styles.first.join}
+            >
+              pridruži nam se
+            </Button>
+          </a>
         </div>
         <div style={styles.second}>
           <div style={styles.second.image} />
@@ -72,7 +86,9 @@ class Landing extends React.Component {
             potpis". Po želji, sloganu i potpisu može prethoditi neki tekst
             po ličnom izboru. Papir se slika i šalje emailom na adresu
             &nbsp;
-            <a href="mailto:ujedinjeni.protiv.kovida@gmail.com">ujedinjeni.protiv.kovida@gmail.com</a>
+            <a href="mailto:ujedinjeni.protiv.kovida@gmail.com">
+              ujedinjeni.protiv.kovida@gmail.com
+            </a>
             &nbsp;
             kao attachment, a u telu poruke pišete svoje ime i prezime i
             titulu sa kojom želite da budete navedeni.
@@ -105,12 +121,14 @@ class Landing extends React.Component {
               </CardContent>
             </CardActionArea>
             <CardActions style={styles.third.actions}>
-              <Button>
-                saznaj više
-              </Button>
+              <Link to="/medics">
+                <Button>
+                  saznaj više
+                </Button>
+              </Link>
             </CardActions>
           </Card>
-          <Card style={{ ...styles.third.card, marginLeft: 10, marginRight: 10, minHeight: 450 }}>
+          <Card style={cardStyle}>
             <CardActionArea>
               <CardMedia style={styles.third.media} image={art} />
               <CardContent>
@@ -123,6 +141,28 @@ class Landing extends React.Component {
                   style={styles.third.typography}
                 >
                   Pogledajte spisak umetnika koji su potpisali proglas.
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions style={styles.third.actions}>
+              <Button>
+                saznaj više
+              </Button>
+            </CardActions>
+          </Card>
+          <Card style={cardStyle}>
+            <CardActionArea>
+              <CardMedia style={styles.third.media} image={art} />
+              <CardContent>
+                <Typography variant="h5" component="h2">
+                  SOCIAJLNI RADNICI PROTIV KOVIDA
+                </Typography>
+                <Typography
+                  variant="body2"
+                  component="p"
+                  style={styles.third.typography}
+                >
+                  Pogledajte spisak socijalnih radnika koji su potpisali proglas.
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -156,10 +196,7 @@ class Landing extends React.Component {
           </Card>
         </div>
         <div style={styles.fourth}>
-          <div style={styles.fourth.hidden} id="otvorenopismo">
-            hidden
-          </div>
-          <p style={styles.fourth.title}>
+          <p style={styles.fourth.title} id="otvorenopismo">
             Otvoreno pismo Vladi RS i ostalim nadležnim institucijama
           </p>
           <p style={styles.fourth.paragraph}>

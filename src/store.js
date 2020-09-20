@@ -10,7 +10,7 @@ import {
   User,
 } from 'freenit'
 import Landing from 'pages/landing'
-import Medics from 'pages/medics'
+import Medic from 'pages/medic'
 import { withRouter } from 'react-router-dom'
 
 // Templates
@@ -36,9 +36,9 @@ const StoreProvider = (props) => {
       useState(Role.initial.detail),
       useState(Role.initial.list),
     ),
-    medics: new Medics.store(
-      useState(Medics.initial.detail),
-      useState(Medics.initial.list),
+    medic: new Medic.store(
+      useState(Medic.initial.detail),
+      useState(Medic.initial.list),
     ),
     user: new User.store(
       useState(User.initial.detail),

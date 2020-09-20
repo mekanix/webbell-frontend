@@ -23,6 +23,40 @@ export default class LandingStore {
     }
   }
 
+  fetch = async (id) => {
+    try {
+      const response = await window.rest.get(`/medics/${id}`)
+      const result = {
+        ...response.data,
+        ok: true
+      }
+      this.setDetail(result)
+      return result
+    } catch (error) {
+      return {
+        ...error,
+        ok: false,
+      }
+    }
+  }
+
+  edit = async (id, data) => {
+    try {
+      const response = await window.rest.patch(`/medics/${id}`, data)
+      const result = {
+        ...response.data,
+        ok: true
+      }
+      this.setDetail(result)
+      return result
+    } catch (error) {
+      return {
+        ...error,
+        ok: false,
+      }
+    }
+  }
+
   getCount = async () => {
     try {
       const response = await window.rest.get('/medics/count')

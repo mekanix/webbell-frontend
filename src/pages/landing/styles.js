@@ -85,14 +85,7 @@ export default {
   fourth: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
     padding: 50,
-    paddingTop: 0,
-
-    hidden: {
-      color: 'rgba(0, 0, 0, 0)',
-      height: 50,
-    },
 
     title: {
       fontSize: 30,
