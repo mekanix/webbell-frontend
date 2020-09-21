@@ -48,27 +48,12 @@ class SocialsList extends React.Component {
           </TableCell>
           <TableCell>
             <Link to={`/social/${sig.id}`}>
-              {sig.title}
-            </Link>
-          </TableCell>
-          <TableCell>
-            <Link to={`/social/${sig.id}`}>
               {sig.name}
             </Link>
           </TableCell>
           <TableCell>
             <Link to={`/social/${sig.id}`}>
               {sig.specialty}
-            </Link>
-          </TableCell>
-          <TableCell>
-            <Link to={`/social/${sig.id}`}>
-              {sig.academic}
-            </Link>
-          </TableCell>
-          <TableCell>
-            <Link to={`/social/${sig.id}`}>
-              {sig.city}
             </Link>
           </TableCell>
         </TableRow>
@@ -78,19 +63,10 @@ class SocialsList extends React.Component {
             {index + 1}
           </TableCell>
           <TableCell>
-            {sig.title}
-          </TableCell>
-          <TableCell>
             {sig.name}
           </TableCell>
           <TableCell>
             {sig.specialty}
-          </TableCell>
-          <TableCell>
-            {sig.academic}
-          </TableCell>
-          <TableCell>
-            {sig.city}
           </TableCell>
         </TableRow>
       )
@@ -113,19 +89,10 @@ class SocialsList extends React.Component {
                   No.
                 </TableCell>
                 <TableCell style={styles.cell}>
-                  Title
-                </TableCell>
-                <TableCell style={styles.cell}>
                   Name
                 </TableCell>
                 <TableCell style={styles.cell}>
                   Specialty
-                </TableCell>
-                <TableCell style={styles.cell}>
-                  Academic
-                </TableCell>
-                <TableCell style={styles.cell}>
-                  City
                 </TableCell>
               </TableRow>
             </TableHead>
