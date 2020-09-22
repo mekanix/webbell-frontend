@@ -57,6 +57,26 @@ export default class MedicStore {
     }
   }
 
+  create = async (title, name, specialty, academic, city) => {
+    try {
+      const response = await window.rest.post(
+        '/medics',
+        { title, name, specialty, academic, city },
+      )
+      const result = {
+        ...response.data,
+        ok: true
+      }
+      this.setDetail(result)
+      return result
+    } catch (error) {
+      return {
+        ...error,
+        ok: false,
+      }
+    }
+  }
+
   getCount = async () => {
     try {
       const response = await window.rest.get('/medics/count')
