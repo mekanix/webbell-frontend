@@ -10,6 +10,7 @@ import {
   Drawer,
   IconButton,
   ListItemIcon,
+  Menu,
   MenuItem,
   Toolbar,
   Typography,
@@ -30,6 +31,7 @@ import styles from './styles'
 class Template extends React.Component {
   state = {
     showMenu: false,
+    anchor: null,
   }
 
   handleLogout = async () => {
@@ -46,6 +48,14 @@ class Template extends React.Component {
 
   handleMenuClose = () => {
     this.setState({ showMenu: false })
+  }
+
+  openMenu = (event) => {
+    this.setState({ anchor: event.currentTarget })
+  }
+
+  closeMenu = () => {
+    this.setState({ anchor: null })
   }
 
   render() {
@@ -139,11 +149,22 @@ class Template extends React.Component {
                   Početna
                 </Button>
               </Link>
-              <Link to="/medics">
-                <Button style={{ color: "white" }}>
-                  potpisi
-                </Button>
-              </Link>
+              <Button style={{ color: "white" }} onClick={this.openMenu}>
+                potpisi
+              </Button>
+              <Menu
+                keepMounted
+                anchorEl={this.state.anchor}
+                open={Boolean(this.state.anchor)}
+                onClose={this.closeMenu}
+              >
+                <Link to="/medics">
+                  <MenuItem>Medics</MenuItem>
+                </Link>
+                <Link to="/socials">
+                  <MenuItem>Social Workers</MenuItem>
+                </Link>
+              </Menu>
               <Button style={{ color: "white" }}>
                 pridruži se
               </Button>
