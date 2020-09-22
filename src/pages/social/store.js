@@ -57,6 +57,23 @@ export default class SocialStore {
     }
   }
 
+  create = async (name, specialty) => {
+    try {
+      const response = await window.rest.post('/socials', { name, specialty })
+      const result = {
+        ...response.data,
+        ok: true
+      }
+      this.setDetail(result)
+      return result
+    } catch (error) {
+      return {
+        ...error,
+        ok: false,
+      }
+    }
+  }
+
   getCount = async () => {
     try {
       const response = await window.rest.get('/socials/count')
