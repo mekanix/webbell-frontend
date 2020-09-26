@@ -74,6 +74,23 @@ export default class SocialStore {
     }
   }
 
+  remove = async (id) => {
+    try {
+      const response = await window.rest.delete(`/socials/${id}`)
+      const result = {
+        ...response.data,
+        ok: true
+      }
+      this.setDetail(result)
+      return result
+    } catch (error) {
+      return {
+        ...error,
+        ok: false,
+      }
+    }
+  }
+
   getCount = async () => {
     try {
       const response = await window.rest.get('/socials/count')

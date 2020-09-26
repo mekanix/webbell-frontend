@@ -14,6 +14,8 @@ export default {
   },
 
   paper: {
+    ...flex,
+    flexDirection: 'column',
     padding: 20,
   },
 
@@ -24,12 +26,14 @@ export default {
 
   field: {
     ...flex,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
   },
 
   cancel: {
     marginLeft: 10,
     marginRight: 10,
+  },
+
+  delete: {
+    marginTop: 10,
   },
 }
