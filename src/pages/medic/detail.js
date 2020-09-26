@@ -1,6 +1,9 @@
 import React from 'react'
 import {
   Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
   Paper,
   TextField,
 } from '@material-ui/core'
@@ -18,6 +21,7 @@ class Medic extends React.Component {
     academic: '',
     city: '',
     specialty: '',
+    delete: false,
   }
 
   constructor(props) {
@@ -58,10 +62,49 @@ class Medic extends React.Component {
     }
   }
 
+  showDelete = () => {
+    this.setState({ delete: true })
+  }
+
+  hideDelete = () => {
+    this.setState({ delete: false })
+  }
+
+  deleteMedic = async () => {
+    const { history, medic, notification } = this.props.store
+    const response = await medic.remove(this.props.match.params.id)
+    if (response.ok) {
+      this.hideDelete()
+      history.push('/medics')
+    } else {
+      const error = errors(response)
+      notification.show(error.message)
+    }
+  }
+
   render() {
     return (
       <Template style={{}} secure>
         <Paper style={styles.paper}>
+          <Dialog open={this.state.delete} onClose={this.hideDelete}>
+            <DialogTitle>Delete!</DialogTitle>
+            <DialogActions>
+              <Button
+                color="primary"
+                variant="outlined"
+                onClick={this.hideDelete}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={this.deleteMedic}
+                color="secondary"
+                variant="contained"
+              >
+                Delete
+              </Button>
+            </DialogActions>
+          </Dialog>
           <div style={styles.field}>
             <TextField
               label="title"
@@ -172,6 +215,14 @@ class Medic extends React.Component {
               OK
             </Button>
           </div>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.showDelete}
+            style={styles.delete}
+          >
+            Delete
+          </Button>
         </Paper>
       </Template>
     )

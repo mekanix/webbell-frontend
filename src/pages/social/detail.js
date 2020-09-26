@@ -1,6 +1,9 @@
 import React from 'react'
 import {
   Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
   Paper,
   TextField,
 } from '@material-ui/core'
@@ -18,6 +21,7 @@ class Social extends React.Component {
     academic: '',
     city: '',
     specialty: '',
+    delete: false,
   }
 
   constructor(props) {
@@ -58,10 +62,49 @@ class Social extends React.Component {
     }
   }
 
+  showDelete = () => {
+    this.setState({ delete: true })
+  }
+
+  hideDelete = () => {
+    this.setState({ delete: false })
+  }
+
+  deleteSocial = async () => {
+    const { history, social, notification } = this.props.store
+    const response = await social.remove(this.props.match.params.id)
+    if (response.ok) {
+      this.hideDelete()
+      history.push('/socials')
+    } else {
+      const error = errors(response)
+      notification.show(error.message)
+    }
+  }
+
   render() {
     return (
       <Template style={{}} secure>
         <Paper style={styles.paper}>
+          <Dialog open={this.state.delete} onClose={this.hideDelete}>
+            <DialogTitle>Delete!</DialogTitle>
+            <DialogActions>
+              <Button
+                color="primary"
+                variant="outlined"
+                onClick={this.hideDelete}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={this.deleteSocial}
+                color="secondary"
+                variant="contained"
+              >
+                Delete
+              </Button>
+            </DialogActions>
+          </Dialog>
           <div style={styles.field}>
             <TextField
               label="name"
@@ -106,6 +149,14 @@ class Social extends React.Component {
               OK
             </Button>
           </div>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.showDelete}
+            style={styles.delete}
+          >
+            Delete
+          </Button>
         </Paper>
       </Template>
     )
