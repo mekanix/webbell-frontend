@@ -8,6 +8,7 @@ import {
   NoPage,
   rest,
 } from 'freenit'
+import Apel from 'pages/apel'
 import Dashboard from 'pages/dashboard'
 import Landing from 'pages/landing'
 import Role from 'pages/role'
@@ -25,6 +26,7 @@ const Routing = () => {
   return (
     <Switch>
       <Route exact path="/" component={Landing.detail} />
+      <Route exact path="/apel" component={Apel.detail} />
       <Route exact path="/confirm/:token" component={Auth.confirm} />
       <Route exact path="/dashboard" component={Dashboard.detail} />
       <Route exact path="/login" component={Auth.login} />
