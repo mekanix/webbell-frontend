@@ -168,6 +168,11 @@ class Template extends React.Component {
               <Button style={{ color: "white" }}>
                 pridruži se
               </Button>
+              <Link to="/apel">
+                <Button style={{ color: "white" }}>
+                  Apel Građanstvu
+                </Button>
+              </Link>
             </Typography>
             {AuthButton}
           </Toolbar>
