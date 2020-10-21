@@ -195,7 +195,7 @@ class MedicsList extends React.Component {
         <Fab
           color="primary"
           onClick={this.openAdd}
-          style={{ position: 'absolute', right: 20 }}
+          style={{ position: 'absolute', top: 90, right: 20 }}
         >
           <AddIcon />
         </Fab>
