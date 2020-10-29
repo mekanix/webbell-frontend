@@ -1,4 +1,4 @@
-export default {
+const styles = {
   flex: {
     flex: 1,
     display: 'flex',
@@ -14,3 +14,6 @@ export default {
     color: 'white',
   },
 }
+
+
+export default styles

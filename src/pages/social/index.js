@@ -1,12 +1,15 @@
-import detail from './detail'
-import list from './list'
+import Detail from './detail'
+import List from './list'
 import initial from './initial'
 import store from './store'
 
 
-export default {
-  detail,
-  list,
+const social = {
+  Detail,
+  List,
   initial,
   store,
 }
+
+
+export default social

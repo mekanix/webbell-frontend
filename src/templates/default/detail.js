@@ -28,7 +28,7 @@ import UserIcon from '@material-ui/icons/PeopleOutline'
 import styles from './styles'
 
 
-class Template extends React.Component {
+class DefaultTemplate extends React.Component {
   state = {
     showMenu: false,
     anchor: null,
@@ -159,10 +159,10 @@ class Template extends React.Component {
                 onClose={this.closeMenu}
               >
                 <Link to="/medics">
-                  <MenuItem>Medics</MenuItem>
+                  <MenuItem>Doktori</MenuItem>
                 </Link>
                 <Link to="/socials">
-                  <MenuItem>Social Workers</MenuItem>
+                  <MenuItem>Socijalni radnici</MenuItem>
                 </Link>
               </Menu>
               <Button style={{ color: "white" }}>
@@ -177,7 +177,7 @@ class Template extends React.Component {
             {AuthButton}
           </Toolbar>
         </AppBar>
-        <EmptyTemplate.detail secure={this.props.secure} style={this.props.style}>
+        <EmptyTemplate.Detail secure={this.props.secure} style={this.props.style}>
           {this.props.children}
           <Drawer open={this.state.showMenu} onClose={this.handleMenuClose}>
             <AppBar position="static">
@@ -201,14 +201,14 @@ class Template extends React.Component {
               {LoggingMenu}
             </div>
           </Drawer>
-        </EmptyTemplate.detail>
+        </EmptyTemplate.Detail>
       </div>
     )
   }
 }
 
 
-Template.propTypes = {
+DefaultTemplate.propTypes = {
   children: PropTypes.node,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
   secure: PropTypes.bool,
@@ -217,5 +217,4 @@ Template.propTypes = {
 }
 
 
-export default withRouter(withStore(Template))
-
+export default withRouter(withStore(DefaultTemplate))

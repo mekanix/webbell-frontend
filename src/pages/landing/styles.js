@@ -2,7 +2,7 @@ import background from './img/background.webp'
 import covid from './img/covid.svg'
 
 
-export default {
+const styles = {
   first: {
     display: 'flex',
     alignItems: 'center',
@@ -113,3 +113,6 @@ export default {
     justifyContent: 'center',
   },
 }
+
+
+export default styles

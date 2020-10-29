@@ -3,9 +3,6 @@ import React from 'react'
 import Template from 'templates/default/detail'
 
 
-// import styles from './styles'
-
-
 class Apel extends React.Component {
   render() {
     return (
