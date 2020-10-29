@@ -5,11 +5,13 @@ import {
 import Template from 'templates/default/detail'
 
 
+const List = Role.list
+
 class RoleList extends React.Component {
   render() {
     return (
       <Template secure style={{}}>
-        <Role.list {...this.props} />
+        <List {...this.props} />
       </Template>
     )
   }

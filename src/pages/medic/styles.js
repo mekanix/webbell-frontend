@@ -4,7 +4,7 @@ const flex = {
   justifyContent: 'center',
 }
 
-export default {
+const styles = {
   cell: {
     fontSize: '20px',
   },
@@ -37,3 +37,6 @@ export default {
     marginTop: 10,
   },
 }
+
+
+export default styles

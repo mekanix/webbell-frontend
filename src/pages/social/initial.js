@@ -1,4 +1,4 @@
-export default {
+const initial = {
   detail: {
     city: '',
     id: 0,
@@ -11,3 +11,6 @@ export default {
     total: 0,
   },
 }
+
+
+export default initial

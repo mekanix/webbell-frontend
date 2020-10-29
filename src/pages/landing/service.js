@@ -1,9 +1,12 @@
 import { rest } from 'utils'
 
 
-export default {
+const service = {
   send: async (data) => {
     const response = await rest.post('/landing/form', data)
     return response.data
   },
 }
+
+
+export default service
