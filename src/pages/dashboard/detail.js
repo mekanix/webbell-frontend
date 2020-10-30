@@ -9,8 +9,10 @@ import {
 } from 'freenit'
 import Template from 'templates/default/detail'
 
-import MedicList from 'components/medic-list'
-import SocialList from 'components/social-list'
+import {
+  MedicList,
+  SocialList,
+} from 'components'
 
 import styles from './styles'
 
