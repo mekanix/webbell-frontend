@@ -10,7 +10,6 @@ import {
   Drawer,
   IconButton,
   ListItemIcon,
-  Menu,
   MenuItem,
   Toolbar,
   Typography,
@@ -26,6 +25,7 @@ import RoleIcon from '@material-ui/icons/People'
 import UserIcon from '@material-ui/icons/PeopleOutline'
 
 import styles from './styles'
+import logo from './img/logo.jpg'
 
 
 class DefaultTemplate extends React.Component {
@@ -141,39 +141,27 @@ class DefaultTemplate extends React.Component {
       : null
     return (
       <div>
-        <AppBar position="sticky">
-          <Toolbar style={{ backgroundColor: "#4ab969" }}>
-            <Typography variant="h5" color="inherit" style={styles.flex}>
-              <Link to="/">
-                <Button style={{ color: "white" }}>
-                  Početna
-                </Button>
-              </Link>
-              <Button style={{ color: "white" }} onClick={this.openMenu}>
-                potpisi
-              </Button>
-              <Menu
-                keepMounted
-                anchorEl={this.state.anchor}
-                open={Boolean(this.state.anchor)}
-                onClose={this.closeMenu}
-              >
-                <Link to="/medics">
-                  <MenuItem>Doktori</MenuItem>
-                </Link>
-                <Link to="/socials">
-                  <MenuItem>Socijalni radnici</MenuItem>
-                </Link>
-              </Menu>
-              <Button style={{ color: "white" }}>
-                pridruži se
-              </Button>
-              <Link to="/apel">
-                <Button style={{ color: "white" }}>
-                  Apel Građanstvu
-                </Button>
-              </Link>
-            </Typography>
+        <AppBar style={{ display: "flex", alignItems: "center", backgroundColor: "#93c47d" }} position="sticky">
+          <Toolbar style={{ backgroundColor: "#93c47d" }}>
+            <img alt="something" src={logo} style={{ height: 50, marginRight: 10 }} />
+            <Button style={{ color: "#2c2c2c" }}>
+              Početna
+            </Button>
+            <Button style={{ color: "#2c2c2c" }}>
+              Udruženje građana UPK
+            </Button>
+            <Button style={{ color: "#2c2c2c" }}>
+              otvoreno pismo
+            </Button>
+            <Button style={{ color: "#2c2c2c" }}>
+              za građane
+            </Button>
+            <Button style={{ color: "#2c2c2c" }}>
+              rad sa institucijama
+            </Button>
+            <Button style={{ color: "#2c2c2c" }}>
+              kontakt
+            </Button>
             {AuthButton}
           </Toolbar>
         </AppBar>
