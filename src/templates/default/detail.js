@@ -144,12 +144,16 @@ class DefaultTemplate extends React.Component {
         <AppBar style={{ display: "flex", alignItems: "center", backgroundColor: "#93c47d" }} position="sticky">
           <Toolbar style={{ backgroundColor: "#93c47d" }}>
             <img alt="something" src={logo} style={{ height: 50, marginRight: 10 }} />
-            <Button style={{ color: "#2c2c2c" }}>
-              Početna
-            </Button>
-            <Button style={{ color: "#2c2c2c" }}>
-              Udruženje građana UPK
-            </Button>
+            <Link to="/">
+              <Button style={{ color: "#2c2c2c" }}>
+                Početna
+              </Button>
+            </Link>
+            <Link to="/udruzenje/onama">
+              <Button style={{ color: "#2c2c2c" }}>
+                Udruženje građana UPK
+              </Button>
+            </Link>
             <Button style={{ color: "#2c2c2c" }}>
               otvoreno pismo
             </Button>
